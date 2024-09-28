@@ -20,6 +20,9 @@ body {
 }
 
 .rightDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     padding: 50px;
     width: 45%;
@@ -33,3 +36,4 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-around;
 }
+
