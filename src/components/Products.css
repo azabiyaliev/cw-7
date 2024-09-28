@@ -1,0 +1,20 @@
+.products {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    background: #2b2b2b;
+    color: #ffffff;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.products:hover {
+    box-shadow: 0 0 15px #fff;
+}
+
+.products:active {
+    box-shadow: 0 0 20px forestgreen;
+
+}

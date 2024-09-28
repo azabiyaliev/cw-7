@@ -1,0 +1,35 @@
+body {
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+.mainDiv {
+    margin: 50px auto 0;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+}
+
+.leftDiv {
+    text-align: center;
+    width: 45%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px #fff;
+    border-radius: 20px;
+}
+
+.rightDiv {
+    text-align: center;
+    padding: 50px;
+    width: 45%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px #fff;
+    border-radius: 20px;
+}
+
+.rightDivInner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+}
