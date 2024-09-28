@@ -15,6 +15,9 @@
 }
 
 .products:active {
-    box-shadow: 0 0 20px forestgreen;
+    box-shadow: 0 0 20px #0000;
+}
 
+.img {
+    margin-top: 10px;
 }

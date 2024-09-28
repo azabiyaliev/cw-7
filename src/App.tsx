@@ -1,12 +1,11 @@
 import './App.css';
 import './components/Products.tsx';
 import Products from './components/Products.tsx';
-import burgerImage from './assets/burger.png';
-import cheeseburgerImage from './assets/cheeseburger.png';
-import friesImage from './assets/fries.png';
-import coffeeImage from './assets/coffee.png';
-import teaImage from './assets/tea.png';
-import colaImage from './assets/cola.png';
+import burgerImage from './assets/burger.svg';
+import friesImage from './assets/fries.svg';
+import coffeeImage from './assets/coffee.svg';
+import teaImage from './assets/tea.svg';
+import colaImage from './assets/cola.svg';
 import {useState} from 'react';
 import ChooseProduct from './components/ChooseProduct.tsx';
 
@@ -26,7 +25,7 @@ const App = () => {
 
   const products: IProducts[] = [
     {title: 'Hamburger', price: 80, image: burgerImage},
-    {title: 'Cheeseburger', price: 90, image: cheeseburgerImage},
+    {title: 'Cheeseburger', price: 90, image: burgerImage},
     {title: 'Fries', price: 45, image: friesImage},
     {title: 'Coffee', price: 70, image: coffeeImage},
     {title: 'Tea', price: 50, image: teaImage},
@@ -43,7 +42,6 @@ const App = () => {
   ]);
 
   const addProductButton = ((productsName: string, productPrice: number,) => {
-    console.log('btn clicked');
     setCount(prevState => prevState.map(item => {
       return item.name === productsName ? {
         ...item,
@@ -51,8 +49,18 @@ const App = () => {
         price: (item.price + productPrice),
       } : item;
     }));
-    console.log(count);
   });
+
+  const display = {
+    display: 'block',
+  };
+
+  for (const product of count) {
+    console.log(product.price);
+    if (product.price > 0) {
+      display.display = 'none';
+    }
+  }
 
   const showProducts = products.map((product) => {
       return (
@@ -61,24 +69,23 @@ const App = () => {
   });
 
   const deleteProductButton = ((productsName: string, productPrice: number) => {
-    console.log('btn clicked');
     setCount(prevState => prevState.map(item => {
       return item.name === productsName ? {
         ...item,
         count: (item.count) - item.count,
         price: (item.price - productPrice),
       } : item;
-      console.log(item.price);
     }));
-    console.log(count);
   });
 
   const showOrders = count.map(order => {
+    if (order.price > 0) {
       return (
           <ChooseProduct key={order.name} title={order.name} price={order.price} count={order.count} deleteProduct={() => deleteProductButton(order.name, order.price)}/>
       );
+    }
   });
-
+  const totalPrice = count.reduce((acc, order) => acc + order.price, 0);
 
   return (
       <div className='mainDiv'>
@@ -86,10 +93,10 @@ const App = () => {
           <h2>Other Details:</h2>
           <div>
             {showOrders}
+            <p style={display}>Order is empty!<br/>Please add some items!</p>
           </div>
-          <p><strong></strong>{}</p>
+          <p><strong>Total price:</strong> <b>{totalPrice} KGS</b></p>
         </div>
-
         <div className='rightDiv'>
           <h2>Add items:</h2>
           <div className='rightDivInner'>
